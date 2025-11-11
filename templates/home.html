@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table id="articlesTable" class="display">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Link</th>
+                    <th>Points</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                <tr>
+                    <td>{{ article['title'] }}</td>
+                    <td><a href="{{ article['link'] }}" target="_blank" class="link-button">link</a></td>
+                    <td>{{ article['points'] }}</td>
+                    <td>{{ article['date_created'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#articlesTable').DataTable({
+                "pageLength": 10,
+                "order": [[3, 'desc']],
+                "searching": false,
+                "paging": true,
+                "info": false,
+                "responsive": true,
+                "language": {
+                    "search": "Search articles:",
+                    "lengthMenu": "Show _MENU_ entries",
+                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                    "paginate": {
+                        "first": "First",
+                        "last": "Last",
+                        "next": "Next",
+                        "previous": "Previous"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

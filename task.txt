@@ -1,0 +1,9 @@
+Django/Flask task
+1) Create scraper which reads data from https://news.ycombinator.com/ (title, link, points, date created) and store it to local database (postgres/mysql)
+2) Scraper also must be able to update points for each article.
+3) It must work as console command
+4) Create frontend part - Display all scraped information using DataTables, 10 entries per page. Bonus points for Vue.js or React usage.
+5) Create readme file - how to set up site
+6) Put all code in github/gitlab repository and send us link to it
+
+Bonus points: Docker usage, Unit tests
